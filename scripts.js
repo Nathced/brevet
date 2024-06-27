@@ -6,6 +6,14 @@ document.getElementById('startPause').addEventListener('click', function() {
     startTimer(15 * 60, 'pause');
 });
 
+document.getElementById('skip').addEventListener('click', function() {
+    if (isBreak) {
+        startTimer(45 * 60, 'revision');
+    } else {
+        startTimer(15 * 60, 'pause');
+    }
+});
+
 function startTimer(duration, type) {
     let timerDisplay = document.getElementById('timerDisplay');
     let minutes, seconds;
@@ -23,12 +31,14 @@ function startTimer(duration, type) {
             clearInterval(timer);
             document.getElementById('alarmSound').play();
             if (type === 'pause') {
+                isBreak = false;
                 if (confirm("Veux-tu commencer une session de révision de 45 minutes ?")) {
                     startTimer(45 * 60, 'revision');
                 } else {
                     startTimer(15 * 60, 'pause');
                 }
             } else {
+                isBreak = true;
                 if (confirm("Veux-tu prendre une pause de 15 minutes ?")) {
                     startTimer(15 * 60, 'pause');
                 } else {
