@@ -6,7 +6,7 @@ document.getElementById('startPause').addEventListener('click', function() {
     startTimer(15 * 60, 'pause');
 });
 
-document.getElementById('skip').addEventListener('click', function() {
+document.getElementById('skipPause').addEventListener('click', function() {
     if (isBreak) {
         startTimer(45 * 60, 'revision');
     } else {
